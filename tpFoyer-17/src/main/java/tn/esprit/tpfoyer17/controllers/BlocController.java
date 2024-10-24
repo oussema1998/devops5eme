@@ -15,11 +15,9 @@ import java.util.List;
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequestMapping("api/blocs")
-public class BlocController {
-    
-    // Déclaration de blocService
-    IBlocService blocService;
 
+
+public class BlocController {
     @GetMapping("/findByFoyerIdFoyer/{idFoyer}")
     public List<Bloc> findByFoyerIdFoyer(@PathVariable("idFoyer") long idFoyer) {
         return blocService.findByFoyerIdFoyer(idFoyer);
@@ -30,25 +28,31 @@ public class BlocController {
         return blocService.findByChambresIdChambre(idChambre);
     }
 
+    IBlocService blocService;
+
     @GetMapping("/retrieveBlocs")
     public List<Bloc> retrieveBlocs() {
         return blocService.retrieveBlocs();
     }
 
-    @GetMapping("/retrieveBloc/{idBloc}")  // Correction ici
+
+    @GetMapping("/retrieveBloc/{idBloc}")
     public Bloc retrieveBloc(@PathVariable("idBloc") long idBloc) {
         return blocService.retrieveBloc(idBloc);
     }
+
 
     @PostMapping("/addBloc")
     public Bloc addBloc(@RequestBody Bloc bloc) {
         return blocService.addBloc(bloc);
     }
 
+
     @PutMapping("/updateBloc")
     public Bloc updateBloc(@RequestBody Bloc bloc) {
         return blocService.updateBloc(bloc);
     }
+
 
     @DeleteMapping("/removeBloc/{idBloc}")
     public void removeBloc(@PathVariable("idBloc") long idBloc) {
