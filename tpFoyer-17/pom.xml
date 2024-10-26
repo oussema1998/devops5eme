@@ -48,7 +48,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -74,4 +81,12 @@
             </plugin>
         </plugins>
     </build>
+    <!-- Deploy to Nexus -->
+    <distributionManagement>
+        <repository>
+            <id>deploymentRepo</id>
+            <name>Nexus Repository</name>
+            <url>http://192.168.100.15:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 </project>
