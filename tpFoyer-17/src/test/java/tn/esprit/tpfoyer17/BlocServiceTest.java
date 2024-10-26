@@ -15,38 +15,38 @@ import tn.esprit.tpfoyer17.repositories.BlocRepository;
 import tn.esprit.tpfoyer17.services.impementations.BlocService;
 
 @SpringBootTest
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class) // Permet de spécifier l'ordre d'exécution des tests
-@Slf4j // Ajoute le support pour le logging avec Lombok
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Slf4j
 public class BlocServiceTest {
 
     @Autowired
-    private BlocRepository blocRepository; // Injection du repository pour interagir avec la base de données
+    private BlocRepository blocRepository;
 
     @Autowired
-    private BlocService blocService; // Injection du service Bloc
+    private BlocService blocService;
 
     @Test
-    @Order(1) // Définit l'ordre d'exécution pour ce test
-    @Transactional // Rendre la méthode transactionnelle pour garantir l'intégrité des données
+    @Order(1)
+    @Transactional
     public void testAddBloc() {
         // Préparer les données
         Bloc bloc = Bloc.builder()
-                .nomBloc("Bloc A") // Nom du bloc à ajouter
-                .capaciteBloc(100) // Capacité du bloc
+                .nomBloc("Bloc A")
+                .capaciteBloc(100)
                 .build();
 
         // Appeler la méthode à tester
         Bloc savedBloc = blocService.addBloc(bloc);
 
         // Vérifier le résultat attendu
-        assertEquals(bloc.getNomBloc(), savedBloc.getNomBloc()); // Vérifie que le nom du bloc enregistré est correct
-        assertEquals(bloc.getCapaciteBloc(), savedBloc.getCapaciteBloc()); // Vérifie que la capacité du bloc enregistré est correcte
+        assertEquals(bloc.getNomBloc(), savedBloc.getNomBloc());
+        assertEquals(bloc.getCapaciteBloc(), savedBloc.getCapaciteBloc());
 
         // Vérification dans la base de données
-        Bloc foundBloc = blocRepository.findById(savedBloc.getIdBloc()).orElse(null); // Recherche le bloc dans la DB
-        assertEquals("Bloc A", foundBloc.getNomBloc()); // Vérifie que le nom du bloc trouvé est correct
-        assertEquals(100, foundBloc.getCapaciteBloc()); // Vérifie que la capacité du bloc trouvé est correcte
+        Bloc foundBloc = blocRepository.findById(savedBloc.getIdBloc()).orElse(null);
+        assertEquals("Bloc A", foundBloc.getNomBloc());
+        assertEquals(100, foundBloc.getCapaciteBloc());
 
-        log.info("Test addBloc passé avec succès pour le bloc : {}", savedBloc); // Log le succès du test
+        log.info("Test addBloc passé avec succès pour le bloc : {}", savedBloc);
     }
 }
