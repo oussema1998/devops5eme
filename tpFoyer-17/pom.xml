@@ -16,6 +16,8 @@
     <properties>
         <java.version>17</java.version>
     </properties>
+
+    <!-- Dependencies -->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,8 +50,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
+
+    <!-- Build section -->
     <build>
         <plugins>
             <!-- Spring Boot Maven Plugin -->
@@ -74,6 +84,29 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- Profiles -->
+    <profiles>
+        <profile>
+            <id>test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M6</version>
+                        <configuration>
+                            <includes>
+                                <include>**/*Test.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <!-- Deploy to Nexus -->
     <distributionManagement>
         <repository>
             <id>deployRepo</id>
@@ -81,4 +114,5 @@
             <url>http://192.168.100.189:8081/repository/maven-snapshots/</url>
         </repository>
     </distributionManagement>
+
 </project>
