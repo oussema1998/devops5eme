@@ -137,7 +137,7 @@
         <repository>
             <id>ploymentRepo</id> <!-- Correction ici -->
             <name>Nexus Repository</name>
-            <url>http://http://172.20.10.13/:8081/repository/maven-snapshots/</url>
+            <url>http://172.20.10.13/:8081/repository/maven-snapshots/</url>
         </repository>
     </distributionManagement>
 </project>
