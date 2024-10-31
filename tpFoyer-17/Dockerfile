@@ -1,4 +1,9 @@
-FROM ubuntu:latest
-LABEL authors="ICHRAK"
+FROM openjdk:17-jdk-alpine
 
-ENTRYPOINT ["top", "-b"]
+RUN addgroup -S spring && adduser -S spring -G spring
+USER spring:spring
+
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+
+ENTRYPOINT ["java","-jar","/app.jar"]
