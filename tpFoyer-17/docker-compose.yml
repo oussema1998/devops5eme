@@ -3,7 +3,7 @@ version: '3.8'  # Version de la syntaxe de Docker Compose
 services:
   app:
     image: mon_image:latest  # Nom de l'image que vous avez construite
-    container_name: mon_container
+    container_name: mon_container_v2
     ports:
       - "8080:8080"  # Mappez le port 8080 du conteneur au port 8080 de l'hôte
     environment:
