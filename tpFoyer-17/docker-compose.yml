@@ -1,11 +1,11 @@
-version: '3.8'  # Version de la syntaxe de Docker Compose
+version: '3.8'
 
 services:
   app:
-    image: mon_image:latest  # Nom de l'image que vous avez construite
+    image: mon_image:latest
     container_name: mon_container_v2
     ports:
-      - "8082:8080"  # Mappez le port 8080 du conteneur au port 8080 de l'hôte
+      - "8082:8080"
     environment:
-      - SOME_ENV_VAR=value  # Remplacez par vos variables d'environnement, si nécessaire
-    restart: unless-stopped  # Redémarrer le conteneur sauf s'il est arrêté manuellement
+      SOME_ENV_VAR: value  # Utilisez `:` au lieu de `=` pour définir les variables d'environnement
+    restart: unless-stopped
