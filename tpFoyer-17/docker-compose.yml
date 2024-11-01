@@ -7,5 +7,5 @@ services:
     ports:
       - "8082:8080"
     environment:
-      SOME_ENV_VAR: value  # Utilisez `:` au lieu de `=` pour définir les variables d'environnement
+      - SOME_ENV_VAR=value
     restart: unless-stopped
