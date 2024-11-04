@@ -13,8 +13,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>tpFoyer-17</name>
     <description>tpFoyer-17</description>
+
     <properties>
         <java.version>17</java.version>
+        <!-- SonarQube coverage property for JaCoCo -->
+        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <dependencies>
@@ -36,6 +39,7 @@
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.0.0</version>
         </dependency>
+
         <!-- Spring Boot Actuator for exposing metrics -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -90,6 +94,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -113,7 +123,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0</version> <!-- Utilisez une version stable -->
+                <version>3.0.0</version>
                 <configuration>
                     <printSummary>true</printSummary>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
@@ -124,12 +134,33 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0</version> <!-- Utilisez une version stable -->
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- JaCoCo Plugin for Code Coverage -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -146,7 +177,7 @@
 
     <distributionManagement>
         <repository>
-            <id>ploymentRepo</id> <!-- Correction ici -->
+            <id>ploymentRepo</id> <!-- Corrected ID -->
             <name>Nexus Repository</name>
             <url>http://172.20.10.13:8081/repository/maven-snapshots/</url>
         </repository>
