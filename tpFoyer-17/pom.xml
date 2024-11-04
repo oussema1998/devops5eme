@@ -98,8 +98,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin JaCoCo -->
-            <!--
+            <!-- JaCoCo Plugin for Code Coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -116,18 +115,10 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
-                            <dataFile>${project.build.directory}/jacoco.exec</dataFile>
-                            <formats>
-                                <format>xml</format>
-                                <format>html</format>
-                            </formats>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
-            -->
+
             <!-- SonarQube Maven Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
