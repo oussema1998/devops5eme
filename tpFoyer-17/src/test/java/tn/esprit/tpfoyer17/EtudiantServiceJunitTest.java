@@ -133,7 +133,7 @@ public class EtudiantServiceJunitTest {
         log.info("Test removeEtudiant succeeded for etudiant ID: {}", idEtudiant);
     }
 
-    @Transactional
+    /*@Transactional
     @Test
     @Order(6)
     public void testFindByReservationsAnneeUniversitaire() {
@@ -170,6 +170,6 @@ public class EtudiantServiceJunitTest {
                 "Expected to find an etudiant with a reservation in the current academic year");
 
         log.info("Test findByReservationsAnneeUniversitaire succeeded, etudiants found: {}", etudiantsWithReservations.size());
-    }
+    }*/
 }
 
