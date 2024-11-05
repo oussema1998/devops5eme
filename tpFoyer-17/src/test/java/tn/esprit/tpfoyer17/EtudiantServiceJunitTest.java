@@ -19,8 +19,8 @@ import tn.esprit.tpfoyer17.services.impementations.EtudiantService;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 
-@SpringBootTest
 @ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Slf4j
