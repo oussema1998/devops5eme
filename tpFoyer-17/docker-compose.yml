@@ -13,7 +13,7 @@ services:
     image: prom/prometheus
     container_name: prometheus_v2
     volumes:
-      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - "9090:9090"
+      - "9091:9090"
     restart: unless-stopped
