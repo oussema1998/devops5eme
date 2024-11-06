@@ -11,7 +11,7 @@ services:
     restart: unless-stopped
   prometheus:
     image: prom/prometheus
-    container_name: prometheus
+    container_name: prometheus_v2
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
