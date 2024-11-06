@@ -9,3 +9,11 @@ services:
     environment:
       - SOME_ENV_VAR=value
     restart: unless-stopped
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
