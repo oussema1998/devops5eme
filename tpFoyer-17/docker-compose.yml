@@ -5,7 +5,7 @@ services:
     image: mon_image:latest
     container_name: mon_container_v2
     ports:
-      - "8083:8082"
+      - "8082:8082"
     environment:
       - SOME_ENV_VAR=value
     restart: unless-stopped
