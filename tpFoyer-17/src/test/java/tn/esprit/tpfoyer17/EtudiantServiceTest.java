@@ -57,19 +57,17 @@ public class EtudiantServiceTest {
     }
 
     @Test
-    void testAddEtudiants() {
+    void testAddEtudiant() {
         // Arrange
-        List<Etudiant> etudiants = Arrays.asList(etudiant);
         when(etudiantRepository.save(etudiant)).thenReturn(etudiant);
-
 
         // Act
         Etudiant addedEtudiant = etudiantService.addEtudiant(etudiant);
 
-
         // Assert
-        assertEquals(1, addedEtudiant);
-        verify(etudiantRepository, times(1)).saveAll(etudiants);
+        assertNotNull(addedEtudiant);
+        assertEquals(etudiant.getIdEtudiant(), addedEtudiant.getIdEtudiant());
+        verify(etudiantRepository, times(1)).save(etudiant);
     }
 
     @Test
