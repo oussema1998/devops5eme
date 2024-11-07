@@ -57,15 +57,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- Dépendance JaCoCo -->
-        <!--
-         <dependency>
-             <groupId>org.jacoco</groupId>
-             <artifactId>org.jacoco.agent</artifactId>
-             <version>0.8.8</version>
-             <scope>runtime</scope>
-         </dependency>
-         -->
 
         <!-- Spring Boot Actuator for exposing metrics -->
         <dependency>
