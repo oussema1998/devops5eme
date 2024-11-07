@@ -32,6 +32,14 @@ services:
         "spring.jpa.hibernate.ddl-auto": "update"
       }'
 
+  angular_frontend:
+    image: saydabouhoula/angular-project:latest
+    container_name: angular-frontend
+    restart: on-failure
+    ports:
+      - "4200:80"  # Expose Angular app on port 4200
+    depends_on:
+      - tpfoyer_app  # Wait for backend to be ready
 
 volumes:
   db:
