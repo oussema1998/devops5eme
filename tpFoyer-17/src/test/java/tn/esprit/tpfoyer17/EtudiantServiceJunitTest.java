@@ -41,7 +41,7 @@ public class EtudiantServiceJunitTest {
                 .cinEtudiant(12345678L)
                 .build();
 
-        Etudiant savedEtudiant = etudiantService.addEtudiants(List.of(etudiant)).get(0);
+        Etudiant savedEtudiant = etudiantService.addEtudiant(etudiant);
 
         assertNotNull(savedEtudiant);
         assertEquals("John", savedEtudiant.getNomEtudiant());
@@ -63,7 +63,7 @@ public class EtudiantServiceJunitTest {
                 .prenomEtudiant("Smith")
                 .cinEtudiant(87654321L)
                 .build();
-        etudiantService.addEtudiants(List.of(etudiant));
+        etudiantService.addEtudiant(etudiant);
 
         List<Etudiant> etudiants = etudiantService.retrieveAllEtudiants();
 
@@ -81,7 +81,7 @@ public class EtudiantServiceJunitTest {
                 .prenomEtudiant("Anderson")
                 .cinEtudiant(11223344L)
                 .build();
-        etudiant = etudiantService.addEtudiants(List.of(etudiant)).get(0);
+        etudiant = etudiantService.addEtudiant(etudiant);
 
         Etudiant foundEtudiant = etudiantService.retrieveEtudiant(etudiant.getIdEtudiant());
 
@@ -100,7 +100,7 @@ public class EtudiantServiceJunitTest {
                 .prenomEtudiant("Brown")
                 .cinEtudiant(44556677L)
                 .build();
-        etudiant = etudiantService.addEtudiants(List.of(etudiant)).get(0);
+        etudiant = etudiantService.addEtudiant(etudiant);
 
         etudiant.setNomEtudiant("Alice Updated");
         etudiant.setCinEtudiant(99887766L);
@@ -122,7 +122,7 @@ public class EtudiantServiceJunitTest {
                 .prenomEtudiant("Delta")
                 .cinEtudiant(22334455L)
                 .build();
-        etudiant = etudiantService.addEtudiants(List.of(etudiant)).get(0);
+        etudiant = etudiantService.addEtudiant(etudiant);
         long idEtudiant = etudiant.getIdEtudiant();
 
         etudiantService.removeEtudiant(idEtudiant);

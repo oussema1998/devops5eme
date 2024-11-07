@@ -25,9 +25,10 @@ public class EtudiantService implements IEtudiantService {
     }
 
     @Override
-    public List<Etudiant> addEtudiants(List<Etudiant> etudiants) {
-        return (List<Etudiant>) etudiantRepository.saveAll(etudiants);
+    public Etudiant addEtudiant(Etudiant etudiant) {
+        return etudiantRepository.save(etudiant);
     }
+
 
     @Override
     public Etudiant updateEtudiant(Etudiant e) {

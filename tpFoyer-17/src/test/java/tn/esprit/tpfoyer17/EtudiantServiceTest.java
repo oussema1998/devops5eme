@@ -60,13 +60,15 @@ public class EtudiantServiceTest {
     void testAddEtudiants() {
         // Arrange
         List<Etudiant> etudiants = Arrays.asList(etudiant);
-        when(etudiantRepository.saveAll(etudiants)).thenReturn(etudiants);
+        when(etudiantRepository.save(etudiant)).thenReturn(etudiant);
+
 
         // Act
-        List<Etudiant> addedEtudiants = etudiantService.addEtudiants(etudiants);
+        Etudiant addedEtudiant = etudiantService.addEtudiant(etudiant);
+
 
         // Assert
-        assertEquals(1, addedEtudiants.size());
+        assertEquals(1, addedEtudiant);
         verify(etudiantRepository, times(1)).saveAll(etudiants);
     }
 
