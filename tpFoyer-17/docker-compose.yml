@@ -38,7 +38,7 @@ services:
       ports:
        -"4200:80"  # Expose Angular app on port 4200
       depends_on:
-        -tpfoyer_image  # Wait for backend to be ready
+        -tpfoyer_app  # Wait for backend to be ready
 
 
 volumes:
