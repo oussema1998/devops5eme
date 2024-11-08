@@ -19,7 +19,9 @@
     <properties>
         <java.version>17</java.version>
         <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.host.url>http://192.168.1.21:9000</sonar.host.url>
     </properties>
+
 
     <dependencies>
         <!-- Spring Boot Dependencies -->
@@ -131,12 +133,23 @@
                 </executions>
             </plugin>
 
-            <!-- SonarQube Maven Plugin -->
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>4.0.0.4121</version>
-            </plugin>
+
+                    <plugin>
+                        <groupId>org.sonarsource.scanner.maven</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                        <version>4.0.0.4121</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>sonar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+
+
+
 
             <!-- Surefire Plugin for Testing -->
             <plugin>
