@@ -16,7 +16,7 @@ services:
   app-tpFoyer:
     depends_on:
       - mysqldb
-    image: ichrakblk/tpfoyer-17
+    image: ichrakblk/tpfoyer-17:0.0.1
     #build : ./
     restart: on-failure
     ports:
