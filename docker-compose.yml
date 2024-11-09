@@ -39,7 +39,7 @@ services:
     image: ichrakblk/tpfoyer-17-frontend
     restart: unless-stopped
     ports:
-      - 80:80
+      - 84:84
     environment:
       - VUE_APP_API_URL=http://app-tpFoyer:8082
 
