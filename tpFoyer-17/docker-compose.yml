@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mysqlbd:
+    container_name: mysqlbd
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tpFoyer17
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+
+  tpfoyer_app:
+    image: wala1/tpfoyer_image
+    container_name: tpfoyer17-app
+    restart: on-failure
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysqlbd
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "server.servlet.context-path": "/tpFoyer17",
+        "server.port": "8082",
+        "spring.datasource.url": "jdbc:mysql://mysqlbd:3306/tpFoyer17?&createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+        "spring.datasource.username": "root",
+        "spring.datasource.password": "",
+        "spring.jpa.show-sql": "true",
+        "spring.jpa.hibernate.ddl-auto": "update"
+      }'
+
+#  angular_frontend:
+#    image: saydabouhoula/angular-project:latest
+#    container_name: angular-frontend
+#    restart: on-failure
+#    ports:
+#      - "4200:80"  # Expose Angular app on port 4200
+#    depends_on:
+#      - tpfoyer_app  # Wait for backend to be ready
+
+volumes:
+  db:
