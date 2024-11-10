@@ -78,7 +78,7 @@
         <repository>
             <id>deploymentRepo</id> <!-- Correction ici -->
             <name>Nexus Repository</name>
-            <url>http://172.20.10.2:8081/repository/maven-snapshots/</url>
+            <url>http://172.20.10.5:8081/repository/maven-snapshots/</url>
         </repository>
     </distributionManagement>
 </project>
