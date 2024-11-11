@@ -33,7 +33,7 @@ services:
       }'
 
   angular_frontend:
-    image: oussemabalha/angular-project:latest
+    image: oussemabalha/angular-tpfoyer17:latest
     container_name: angular-frontend
     restart: on-failure
     ports:
