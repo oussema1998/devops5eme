@@ -1,0 +1,34 @@
+<div class="bloc-container">
+    <h2>Liste des Blocs</h2>
+    
+    <!-- Bouton de retour vers le formulaire d'ajout -->
+    <button (click)="goToAddBloc()" class="btn btn-info" style="background-color: #056edf;">
+      Retour au Formulaire d'Ajout
+    </button>
+  
+    <h3>Blocs Existants</h3>
+    <table class="bloc-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom du Bloc</th>
+          <th>Capacité</th>
+          <th>Actions</th> <!-- Colonne pour les actions -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bloc of blocs">
+          <td>{{ bloc.idBloc }}</td>
+          <td>{{ bloc.nomBloc }}</td>
+          <td>{{ bloc.capaciteBloc }}</td>
+          <td>
+            <!-- Bouton de suppression -->
+            <button (click)="deleteBloc(bloc.idBloc)" class="btn btn-danger">
+              Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

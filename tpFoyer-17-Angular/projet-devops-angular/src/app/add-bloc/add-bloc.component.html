@@ -1,0 +1,50 @@
+<div class="bloc-container" style="margin-top: 80px;">
+    <h2>Service des Blocs</h2>
+  
+    <!-- Formulaire pour ajouter un nouveau Bloc -->
+    <div class="add-bloc-form">
+      <h3>Ajouter un Bloc</h3>
+      <form (ngSubmit)="addBloc()" #blocForm="ngForm">
+        
+        <div class="form-group">
+          <label for="nomBloc">Nom du Bloc:</label>
+          <input
+            type="text"
+            id="nomBloc"
+            [(ngModel)]="newBloc.nomBloc"
+            name="nomBloc"
+            required
+            #nomBloc="ngModel"
+            class="form-control"
+            placeholder="Entrez le nom du bloc"
+          />
+          <div *ngIf="nomBloc.invalid && nomBloc.touched" class="error">
+            Le nom du bloc est requis.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="capaciteBloc">Capacité du Bloc:</label>
+          <input
+            type="number"
+            id="capaciteBloc"
+            [(ngModel)]="newBloc.capaciteBloc"
+            name="capaciteBloc"
+            required
+            min="1"
+            #capaciteBloc="ngModel"
+            class="form-control"
+            placeholder="Entrez la capacité du bloc"
+          />
+          <div *ngIf="capaciteBloc.invalid && capaciteBloc.touched" class="error">
+            La capacité du bloc doit être un nombre positif.
+          </div>
+        </div>
+  
+        <button type="submit" [disabled]="blocForm.invalid" class="submit-btn">
+          Ajouter
+        </button>
+      </form>
+    </div>
+  </div>
+  
