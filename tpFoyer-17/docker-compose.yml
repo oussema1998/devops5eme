@@ -14,7 +14,7 @@ services:
       - db:/var/lib/mysql
 
   tpfoyer_app:
-    image: wala1/tpfoyer_image
+    image: wala1/tpfoyer17_image
     container_name: tpfoyer17-app
     restart: on-failure
     ports:
